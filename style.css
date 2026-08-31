@@ -1,0 +1,638 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080808;
+  color: #f4f1e9;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+
+  border-bottom: 1px solid #222;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  background: rgba(8, 8, 8, 0.92);
+
+  backdrop-filter: blur(14px);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.logo span {
+  color: #c8b678;
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+
+  color: #888;
+
+  font-size: 14px;
+}
+
+.nav-links a {
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-button {
+  border: 1px solid #3a3a3a;
+
+  border-radius: 100px;
+
+  padding: 10px 18px;
+
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.nav-button:hover {
+  border-color: #777;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: calc(100vh - 76px);
+
+  padding: 90px 20px 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  background: radial-gradient(circle at 50% 25%, #1b1914 0%, #080808 45%);
+}
+
+.live-label,
+.section-label {
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  color: #999;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+
+  display: inline-block;
+
+  border-radius: 50%;
+
+  background: #b7d76c;
+
+  margin-right: 8px;
+
+  box-shadow: 0 0 12px rgba(183, 215, 108, 0.7);
+}
+
+.hero h1 {
+  margin-top: 30px;
+
+  font-size: clamp(70px, 12vw, 155px);
+
+  line-height: 0.82;
+
+  letter-spacing: -8px;
+
+  font-weight: 850;
+}
+
+.hero h1 span {
+  font-family: Georgia, serif;
+
+  font-weight: 400;
+
+  color: #cbb97e;
+}
+
+.hero-description {
+  max-width: 560px;
+
+  margin-top: 35px;
+
+  color: #929292;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+}
+
+/* =========================
+   GAME
+========================= */
+
+.game-container {
+  width: min(680px, 100%);
+
+  margin-top: 55px;
+
+  padding: 18px;
+
+  background: #0d0d0d;
+
+  border: 1px solid #292929;
+
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.game-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  text-align: left;
+
+  padding: 5px 5px 18px;
+}
+
+.game-header small,
+.move-info small {
+  display: block;
+
+  color: #666;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  margin-bottom: 5px;
+}
+
+.game-header strong {
+  font-size: 13px;
+}
+
+.watching {
+  color: #858585;
+
+  font-size: 11px;
+}
+
+/* =========================
+   CHESS BOARD
+========================= */
+
+.chessboard {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+
+  grid-template-columns: repeat(8, 1fr);
+
+  grid-template-rows: repeat(8, 1fr);
+
+  border: 5px solid #171717;
+
+  overflow: hidden;
+}
+
+.square {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(22px, 5vw, 48px);
+
+  line-height: 1;
+
+  user-select: none;
+}
+
+.square.light {
+  background: #c3ad79;
+}
+
+.square.dark {
+  background: #806d4d;
+}
+
+.square:nth-child(1),
+.square:nth-child(2) {
+  text-shadow: 0 2px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   MOVE INFO
+========================= */
+
+.move-info {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  align-items: center;
+
+  padding: 20px 5px 12px;
+
+  text-align: left;
+}
+
+.move-info strong {
+  font-size: 22px;
+}
+
+.turn {
+  text-align: center;
+
+  color: #ccc;
+
+  font-size: 10px;
+
+  letter-spacing: 1.4px;
+}
+
+.price {
+  text-align: right;
+}
+
+.price strong {
+  color: #dec681;
+
+  font-size: 25px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.move-button {
+  width: 100%;
+
+  border: none;
+
+  background: #d7c27c;
+
+  color: #111;
+
+  padding: 18px;
+
+  font-size: 13px;
+
+  font-weight: 850;
+
+  letter-spacing: 0.4px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.move-button:hover {
+  background: #ead58f;
+
+  transform: translateY(-1px);
+}
+
+.move-button span {
+  float: right;
+
+  font-size: 20px;
+
+  line-height: 12px;
+}
+
+.demo-text {
+  color: #555;
+
+  font-size: 10px;
+
+  margin-top: 12px;
+}
+
+/* =========================
+   ATTENTION
+========================= */
+
+.attention,
+.how-it-works,
+.recent-moves {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 130px 5vw;
+}
+
+.attention h2 {
+  margin-top: 25px;
+
+  font-size: clamp(45px, 7vw, 90px);
+
+  line-height: 0.95;
+
+  letter-spacing: -4px;
+}
+
+.attention h2 span {
+  font-family: Georgia, serif;
+
+  color: #c8b678;
+
+  font-weight: 400;
+}
+
+.attention p {
+  max-width: 600px;
+
+  margin-top: 30px;
+
+  color: #8d8d8d;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+.how-it-works {
+  border-top: 1px solid #222;
+}
+
+.steps {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 25px;
+
+  margin-top: 55px;
+}
+
+.steps article {
+  border-top: 1px solid #393939;
+
+  padding-top: 18px;
+}
+
+.steps article > span {
+  color: #666;
+
+  font-size: 11px;
+}
+
+.steps h3 {
+  margin-top: 28px;
+
+  font-size: 18px;
+}
+
+.steps p {
+  margin-top: 12px;
+
+  color: #777;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* =========================
+   RECENT MOVES
+========================= */
+
+.recent-moves {
+  border-top: 1px solid #222;
+}
+
+.recent-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin: 25px 0 40px;
+}
+
+.recent-header h2 {
+  font-size: clamp(40px, 6vw, 70px);
+
+  line-height: 0.9;
+
+  letter-spacing: -3px;
+}
+
+.live-status {
+  color: #b7d76c;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+.moves-list {
+  border-top: 1px solid #292929;
+}
+
+.move-row {
+  display: grid;
+
+  grid-template-columns:
+    70px
+    1fr
+    80px
+    60px;
+
+  gap: 15px;
+
+  align-items: center;
+
+  padding: 20px 0;
+
+  border-bottom: 1px solid #222;
+
+  font-size: 14px;
+}
+
+.move-row > span:first-child {
+  color: #666;
+}
+
+.move-row > span {
+  color: #777;
+}
+
+.move-row small {
+  color: #777;
+
+  text-align: right;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  border-top: 1px solid #222;
+
+  padding: 30px 5vw;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+.footer-logo {
+  color: #eee;
+
+  font-weight: 700;
+}
+
+.footer-logo span {
+  color: #c8b678;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-button {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 70px 18px 90px;
+  }
+
+  .hero h1 {
+    letter-spacing: -4px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .game-container {
+    margin-top: 45px;
+
+    padding: 10px;
+  }
+
+  .move-info {
+    padding-top: 18px;
+  }
+
+  .turn {
+    font-size: 8px;
+
+    letter-spacing: 1px;
+  }
+
+  .price strong {
+    font-size: 20px;
+  }
+
+  .attention,
+  .how-it-works,
+  .recent-moves {
+    padding: 90px 22px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+  }
+
+  .move-row {
+    grid-template-columns:
+      45px
+      1fr
+      45px
+      45px;
+
+    font-size: 11px;
+  }
+
+  footer {
+    padding: 25px 20px;
+  }
+}
